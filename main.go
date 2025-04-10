@@ -2,27 +2,48 @@ package main
 
 import "fmt"
 
-func sayHello(name string) {
-	fmt.Println("hallo", name)
+// func sayHello(name string) {
+// 	fmt.Println("hallo", name)
+// }
+
+// func tambah(a, b int) int {
+// 	return a + b
+// }
+
+//	func calculate(a, b int) (sum int, multiply int) {
+//		sum = a + b
+//		multiply = a * b
+//		return
+//	}
+func handlePanic() {
+	if r := recover(); r != nil {
+		fmt.Println("panic", r)
+	}
 }
 
-func tambah(a, b int) int {
-	return a + b
-}
+func safeDivision(a, b int) {
+	defer handlePanic()
 
-func calculate(a, b int) (sum int, multiply int) {
-	sum = a + b
-	multiply = a * b
-	return
+	if b == 0 {
+		panic("pembagian dengan nol tidak diperbolehkan")
+	}
+
+	result := a / b
+	fmt.Println("hasil Pembagian", result)
 }
 
 func main() {
-	sayHello("Ajitama")
-	result := tambah(5, 10)
-	fmt.Println("hasil pemjumlahan", result)
-	add, multiply := calculate(3, 6)
-	fmt.Println("hasil pemjumlahan", add)
-	fmt.Println("hasil perkalian", multiply)
+	// defer handlePanic()
+	fmt.Println("start")
+	safeDivision(1, 0)
+	safeDivision(10, 2)
+	fmt.Println()
+	// sayHello("Ajitama")
+	// result := tambah(5, 10)
+	// fmt.Println("hasil pemjumlahan", result)
+	// add, multiply := calculate(3, 6)
+	// fmt.Println("hasil pemjumlahan", add)
+	// fmt.Println("hasil perkalian", multiply)
 
 	// if else
 	// angka := 9
