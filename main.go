@@ -15,29 +15,67 @@ import "fmt"
 //		multiply = a * b
 //		return
 //	}
-func handlePanic() {
-	if r := recover(); r != nil {
-		fmt.Println("panic", r)
-	}
+// func handlePanic() {
+// 	if r := recover(); r != nil {
+// 		fmt.Println("panic", r)
+// 	}
+// }
+
+// func safeDivision(a, b int) {
+// 	defer handlePanic()
+
+// 	if b == 0 {
+// 		panic("pembagian dengan nol tidak diperbolehkan")
+// 	}
+
+// 	result := a / b
+// 	fmt.Println("hasil Pembagian", result)
+// }
+
+// struct
+type User struct {
+	Name    string
+	Email   string
+	Age     int
+	Address Address
 }
 
-func safeDivision(a, b int) {
-	defer handlePanic()
+type Address struct {
+	City    string
+	Country string
+}
 
-	if b == 0 {
-		panic("pembagian dengan nol tidak diperbolehkan")
-	}
-
-	result := a / b
-	fmt.Println("hasil Pembagian", result)
+// struct method
+func (user User) IsAdult() bool {
+	return user.Age > 18
 }
 
 func main() {
+	user1 := User{
+		Name:  "Ajitama",
+		Email: "ajitama@gmail.com",
+		Age:   33,
+		Address: Address{
+			City:    "Surabaya",
+			Country: "Indonesia",
+		},
+	}
+	user2 := User{
+		Name:  "nozami",
+		Email: "ajitama@gmail.com",
+		Age:   13,
+	}
+
+	fmt.Println(user1)
+	fmt.Println(user1.Name)
+	fmt.Println(user1.IsAdult())
+	fmt.Println(user2.IsAdult())
+
 	// defer handlePanic()
-	fmt.Println("start")
-	safeDivision(1, 0)
-	safeDivision(10, 2)
-	fmt.Println()
+	// fmt.Println("start")
+	// safeDivision(1, 0)
+	// safeDivision(10, 2)
+	// fmt.Println()
 	// sayHello("Ajitama")
 	// result := tambah(5, 10)
 	// fmt.Println("hasil pemjumlahan", result)
