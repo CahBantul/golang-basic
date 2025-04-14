@@ -33,43 +33,65 @@ import "fmt"
 // }
 
 // struct
-type User struct {
-	Name    string
-	Email   string
-	Age     int
-	Address Address
+// type User struct {
+// 	Name    string
+// 	Email   string
+// 	Age     int
+// 	Address Address
+// }
+
+// type Address struct {
+// 	City    string
+// 	Country string
+// }
+
+// // struct method
+// func (user User) IsAdult() bool {
+// 	return user.Age > 18
+// }
+
+type Speaker interface {
+	Speak() string
 }
 
-type Address struct {
-	City    string
-	Country string
+type Dog struct{}
+
+func (dog Dog) Speak() string {
+	return "Guk guk!"
 }
 
-// struct method
-func (user User) IsAdult() bool {
-	return user.Age > 18
+type Cat struct{}
+
+func (cat Cat) Speak() string {
+	return "Meong Meong"
 }
 
 func main() {
-	user1 := User{
-		Name:  "Ajitama",
-		Email: "ajitama@gmail.com",
-		Age:   33,
-		Address: Address{
-			City:    "Surabaya",
-			Country: "Indonesia",
-		},
-	}
-	user2 := User{
-		Name:  "nozami",
-		Email: "ajitama@gmail.com",
-		Age:   13,
-	}
+	dog := Dog{}
+	result := dog.Speak()
+	fmt.Println("hewan ini bersuara", result)
+	cat := Cat{}
+	catSpeak := cat.Speak()
+	fmt.Println("hewan ini bersuara", catSpeak)
+	// user1 := User{
+	// 	Name:  "Ajitama",
+	// 	Email: "ajitama@gmail.com",
+	// 	Age:   33,
+	// 	Address: Address{
+	// 		City:    "Surabaya",
+	// 		Country: "Indonesia",
+	// 	},
+	// }
+	// user2 := User{
+	// 	Name:  "nozami",
+	// 	Email: "ajitama@gmail.com",
+	// 	Age:   13,
+	// }
 
-	fmt.Println(user1)
-	fmt.Println(user1.Name)
-	fmt.Println(user1.IsAdult())
-	fmt.Println(user2.IsAdult())
+	// fmt.Println(user1)
+	// fmt.Println(user1.Name)
+	// fmt.Println(user1.IsAdult())
+	// fmt.Println(user2.IsAdult())
 
 	// defer handlePanic()
 	// fmt.Println("start")
