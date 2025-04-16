@@ -50,29 +50,52 @@ import "fmt"
 // 	return user.Age > 18
 // }
 
-type Speaker interface {
-	Speak() string
+// type Speaker interface {
+// 	Speak() string
+// }
+
+// type Dog struct{}
+
+// func (dog Dog) Speak() string {
+// 	return "Guk guk!"
+// }
+
+// type Cat struct{}
+
+// func (cat Cat) Speak() string {
+// 	return "Meong Meong"
+// }
+
+//	func ubahNilai(val *int) {
+//		*val = 20
+//	}
+type User struct {
+	Name string
 }
 
-type Dog struct{}
-
-func (dog Dog) Speak() string {
-	return "Guk guk!"
-}
-
-type Cat struct{}
-
-func (cat Cat) Speak() string {
-	return "Meong Meong"
+func GantiNama(u *User) {
+	u.Name = "Ajitama"
 }
 
 func main() {
-	dog := Dog{}
-	result := dog.Speak()
-	fmt.Println("hewan ini bersuara", result)
-	cat := Cat{}
-	catSpeak := cat.Speak()
-	fmt.Println("hewan ini bersuara", catSpeak)
+	user := User{Name: "Anonim"}
+	GantiNama(&user)
+	fmt.Println(user.Name)
+	// x := 10
+	// var ptr *int
+	// ubahNilai(&x)
+	// fmt.Println("setelah diubah:", ptr)
+
+	// var ptr *int = &x
+
+	// fmt.Println("nilai dari ptr", ptr)
+	// fmt.Println("nilai yang ditunjuk dari ptr", *ptr)
+	// dog := Dog{}
+	// result := dog.Speak()
+	// fmt.Println("hewan ini bersuara", result)
+	// cat := Cat{}
+	// catSpeak := cat.Speak()
+	// fmt.Println("hewan ini bersuara", catSpeak)
 	// user1 := User{
 	// 	Name:  "Ajitama",
 	// 	Email: "ajitama@gmail.com",
