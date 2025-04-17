@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"golang-basic/mathutil"
+	"golang-basic/pricing"
+)
 
 // func sayHello(name string) {
 // 	fmt.Println("hallo", name)
@@ -69,18 +73,24 @@ import "fmt"
 //	func ubahNilai(val *int) {
 //		*val = 20
 //	}
-type User struct {
-	Name string
-}
+// type User struct {
+// 	Name string
+// }
 
-func GantiNama(u *User) {
-	u.Name = "Ajitama"
-}
+// func GantiNama(u *User) {
+// 	u.Name = "Ajitama"
+// }
 
 func main() {
-	user := User{Name: "Anonim"}
-	GantiNama(&user)
-	fmt.Println(user.Name)
+	result := mathutil.Add(3, 5)
+	fmt.Println("hasil penjumlahan", result)
+
+	price := 1_200_000
+	final := pricing.CalculateFinalPrice(float64(price))
+	fmt.Println("anda harus membayar", final)
+	// user := User{Name: "Anonim"}
+	// GantiNama(&user)
+	// fmt.Println(user.Name)
 	// x := 10
 	// var ptr *int
 	// ubahNilai(&x)
